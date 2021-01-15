@@ -21,7 +21,6 @@ class LabelContainer extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         labels: state.labels
     }

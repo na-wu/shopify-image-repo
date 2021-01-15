@@ -5,18 +5,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import { fetchLabels } from '../actions/imageActions';
 import { connect } from 'react-redux';
 
-// function upload(base64) {
-//   const body = {
-//     "file": base64
-//   }
-//   const options = {
-//     method: "POST",
-//     body: JSON.stringify(body)
-//   }
-//   fetch("https://te10ynt1ma.execute-api.us-west-1.amazonaws.com/prod/images/upload", options)
-//   .then(this.props.fetchLabels("sample_query"))
-// }
-
 function getBase64New(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -25,25 +13,6 @@ function getBase64New(file) {
     reader.onerror = error => reject(error);
   });
 }
-
-// function beforeUpload(file) {
-  
-//   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-//   if (!isJpgOrPng) {
-//     message.error('You can only upload JPG/PNG file!');
-//     return false;
-//   }
-//   const isLt2M = file.size / 1024 / 1024 < 5;
-//   if (!isLt2M) {
-//     message.error('Image must smaller than 5MB!');
-//     return false;
-//   }
-//   getBase64New(file).then((response) => {
-//     upload(response)
-//   }).catch(err => console.log(err))
-
-//   return false; // change this
-// }
 
 export class UploadComponent extends React.Component {
   
@@ -86,8 +55,7 @@ export class UploadComponent extends React.Component {
       .then(this.props.fetchLabels("sample_query"))
     })
     .catch(err => console.log(err))
-
-    return false; // change this
+    return false;
   }
 
   handleCancel = () => this.setState({ previewVisible: false });
@@ -142,7 +110,6 @@ export class UploadComponent extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
       images: state.images
   }

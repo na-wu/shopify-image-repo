@@ -9,7 +9,6 @@ const initState = {
 }
 
 export default function(state = initState, action) {
-  console.log(state)
     switch (action.type) {
       case 'REPLACE':
         return {
